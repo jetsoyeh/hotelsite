@@ -1,62 +1,51 @@
 <template>
   <v-app id="inspire">
-    <v-container fluid>
-      <!--側邊欄-->
-      <v-navigation-drawer
-        temporary
-        v-model="sidebar"
-        app
-        clipped
-        class="red lighten-3"
-      >
-        <v-list nav dense>
-          <v-list-item>
+    <!--側邊欄-->
+    <v-navigation-drawer temporary v-model="sidebar" app  class="red lighten-3">
+      <v-list nav dense>
+        <v-list-item>
+          <v-list-item-content>
+            <v-img src="@/assets/logo.png"></v-img>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider></v-divider>
+        <div v-for="item in menuItems" :key="item.title">
+          <v-list-item :to="item.link">
+            <v-list-item-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-action>
             <v-list-item-content>
-              <v-img src="@/assets/logo.png"></v-img>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-divider></v-divider>
-          <div v-for="item in menuItems" :key="item.title">
-            <v-list-item to="item.link">
-              <v-list-item-action>
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </div>
-        </v-list>
-      </v-navigation-drawer>
-      <!--主選單-->
-      <v-app-bar dark class="red lighten-3">
-        <v-app-bar-nav-icon
-          @click.stop="sidebar = !sidebar"
-          class="hidden-sm-and-up"
-        ></v-app-bar-nav-icon>
-        <v-toolbar-title>
-          <router-link to="/" tag="span" style="cursor: pointer"
-            >SunRaise</router-link
-          >
-        </v-toolbar-title>
-        <v-spacer />
-        <v-toolbar-items class="hidden-xs-only">
-          <v-btn
-            text
-            v-for="item in menuItems"
-            :key="item.title"
-            :to="item.link"
-          >
-            <v-icon left>{{ item.icon }}</v-icon>
-            {{ item.title }}
-          </v-btn>
-        </v-toolbar-items>
-        <v-spacer />
-      </v-app-bar>
-      <v-main>
+        </div>
+      </v-list>
+    </v-navigation-drawer>
+    <!--主選單-->
+    <v-app-bar dark class="red lighten-3" app>
+      <v-app-bar-nav-icon
+        @click.stop="sidebar = !sidebar"
+        class="hidden-sm-and-up"
+      ></v-app-bar-nav-icon>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" style="cursor: pointer"
+          >SunRaise</router-link
+        >
+      </v-toolbar-title>
+      <v-spacer />
+      <v-toolbar-items class="hidden-xs-only">
+        <v-btn text v-for="item in menuItems" :key="item.title" :to="item.link">
+          <v-icon left>{{ item.icon }}</v-icon>
+          {{ item.title }}
+        </v-btn>
+      </v-toolbar-items>
+      <v-spacer />
+    </v-app-bar>
+    <v-main>
+      <v-container fluid>
         <router-view></router-view>
-      </v-main>
-    </v-container>
+      </v-container>
+    </v-main>
   </v-app>
 </template>
 
