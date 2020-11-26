@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <!--側邊欄-->
-    <v-navigation-drawer temporary v-model="sidebar" app  class="red lighten-3">
+    <v-navigation-drawer temporary v-model="sidebar" app class="red lighten-3">
       <v-list nav dense>
         <v-list-item>
           <v-list-item-content>
@@ -41,17 +41,28 @@
       </v-toolbar-items>
       <v-spacer />
     </v-app-bar>
+    <!--主內容-->
     <v-main>
       <v-container fluid>
         <router-view></router-view>
       </v-container>
     </v-main>
+    <!--頁尾-->
+    <v-divider></v-divider>
+    <v-footer >
+      <myfooter />
+    </v-footer>
   </v-app>
 </template>
 
 <script>
+import myfooter from "./components/footer.vue";
+
 export default {
   name: "App",
+  components: {
+    myfooter,
+  },
   data() {
     return {
       sidebar: false,
@@ -73,4 +84,5 @@ export default {
 </script>
 <style lang="sass">
 @import '~vuetify/src/styles/main.sass'
+
 </style>
