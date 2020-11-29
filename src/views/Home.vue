@@ -52,7 +52,7 @@ export default {
         {
           title: "房型介紹",
           source: require("../assets/jpg/S__86507538.jpg"),
-          link: "/room",
+          link: "/room/main",
           name: "Rooms",
         },
         {
