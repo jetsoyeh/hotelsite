@@ -68,7 +68,7 @@ export default {
       sidebar: false,
       menuItems: [
         { icon: "mdi-home", title: "日出之美", link: "/" },
-        { icon: "mdi-room-service", title: "房型介紹", link: "/room" },
+        { icon: "mdi-room-service", title: "房型介紹", link: "/room/main" },
         {
           icon: "mdi-backspace-reverse-outline",
           title: "日出空間",
