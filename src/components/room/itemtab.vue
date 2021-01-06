@@ -1,13 +1,13 @@
 <template>
   <v-card color="basil">
     <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
-      <v-tab> 價格說明 </v-tab>
-      <v-tab> 基本介紹 </v-tab>
-      <v-tab> 注意事項 </v-tab>
-      <v-tab> 改期退訂 </v-tab>
+      <v-tab id="0" @mouseover="changetab(0)"> 價格說明 </v-tab>
+      <v-tab id="1" @mouseover="changetab(1)"> 基本介紹 </v-tab>
+      <v-tab id="2" @mouseover="changetab(2)"> 注意事項 </v-tab>
+      <v-tab id="3" @mouseover="changetab(3)"> 改期退訂 </v-tab>
     </v-tabs>
-    <v-tabs-items v-model="tab">
-      <v-tab-item>
+    <v-tabs-items v-model="tab" >
+      <v-tab-item >
         <v-card color="basil" flat>
           <v-card-text>
             <v-simple-table dark>
@@ -15,11 +15,11 @@
                 <tbody>
                   <tr>
                     <td>平日</td>
-                    <td>{{commonday}}/房</td>
+                    <td>{{ commonday }}/房</td>
                   </tr>
                   <tr>
                     <td>假日</td>
-                    <td>{{holiday}}/房</td>
+                    <td>{{ holiday }}/房</td>
                   </tr>
                 </tbody>
               </template>
@@ -31,13 +31,13 @@
         <v-card color="basil" flat>
           <v-card-text>
             <h2><I>容納人數</I></h2>
-            <h4>{{person}}</h4>
+            <h4>{{ person }}</h4>
             <br />
             <h2><I>客房面積</I></h2>
-            <h4>{{roomsize}}</h4>
+            <h4>{{ roomsize }}</h4>
             <br />
             <h2><I>床鋪尺寸</I></h2>
-            <h4>{{bedsize}}</h4>
+            <h4>{{ bedsize }}</h4>
             <br />
             <h2><I>房價說明</I></h2>
             <span style="background-color: yellow"
@@ -57,8 +57,9 @@
             <h2><I>客房簡介</I></h2>
             <ul>
               <li>
-                旅行
-                標準{{person}}套房位於{{floor}}，空間約{{roomsize}}，格局方正，有1張雙人床，及寬敞舒適的泡湯空間享受慢漫溫泉的時光。房間內的設備有沙發、42吋液晶電視、第四台、冷暖空調、快煮壺、茶杯、提供牙刷、梳子、刮鬍刀、刮鬍泡沫、棉花棒、化妝棉、更提供卸妝油、沐浴用品採用天然有機沐浴乳、洗髮精、潤髮乳、風力強的吹風機..等貼心無極限的齊全備品，如在家般方便舒適，床墊嚴選德國床墊，尺寸為150X180cm讓您出外旅遊也能享受慢舒眠。
+                旅行 標準{{ person }}套房位於{{ floor }}，空間約{{
+                  roomsize
+                }}，格局方正，有1張雙人床，及寬敞舒適的泡湯空間享受慢漫溫泉的時光。房間內的設備有沙發、42吋液晶電視、第四台、冷暖空調、快煮壺、茶杯、提供牙刷、梳子、刮鬍刀、刮鬍泡沫、棉花棒、化妝棉、更提供卸妝油、沐浴用品採用天然有機沐浴乳、洗髮精、潤髮乳、風力強的吹風機..等貼心無極限的齊全備品，如在家般方便舒適，床墊嚴選德國床墊，尺寸為150X180cm讓您出外旅遊也能享受慢舒眠。
               </li>
               <li>
                 除了住宿的空間外，二樓森鄰綠交誼廳也是提供宿友們使用的(開放時間09:00~21:00)。
@@ -93,10 +94,9 @@
               有權利拒絕入住並沒收訂金，敬請見諒。<br />
               1.三歲以下小朋友不加床不加收費用(特定房型限一位)。<br />
               2.四~六歲小朋友不加床每人收費 $300。(提供盥洗用品、毛巾及早餐)<br />
-              3.<span
-                style="background-color: yellow">
-                六歲以上視為成人皆需加床</span>，每人收費$800。(提供單人床墊、寢具、盥洗用品、毛巾及早餐)<br
-              />
+              3.<span style="background-color: yellow">
+                六歲以上視為成人皆需加床</span
+              >，每人收費$800。(提供單人床墊、寢具、盥洗用品、毛巾及早餐)<br />
               4.加被子一床200元 / 加枕頭一個50元 / 加浴巾一條50元。
             </h4>
             <br />
@@ -190,13 +190,25 @@
 <script>
 export default {
   name: "Itemtab",
-  props:[
-      "commonday","holiday","roomsize","bedsize","intro","floor","person"
+  props: [
+    "commonday",
+    "holiday",
+    "roomsize",
+    "bedsize",
+    "intro",
+    "floor",
+    "person",
   ],
   data() {
     return {
       tab: null,
     };
+  },
+  methods: {
+    changetab(id) {
+      let tag = document.getElementById(id);
+      tag.click();
+    },
   },
 };
 </script>

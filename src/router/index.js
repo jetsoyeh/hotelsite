@@ -16,7 +16,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Contacts.vue')
   },
   {
     path: '/room',
@@ -25,39 +25,57 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Room.vue'),
-    children:[
+    children: [
       {
-        path:'main',
+        path: 'main',
         component: () => import(/* webpackChunkName: "about" */ '../components/room/roommain.vue'),
       },
       {
-        path:'room1',
+        path: 'room1',
         component: () => import(/* webpackChunkName: "about" */ '../components/room/room1.vue'),
       },
       {
-        path:'room2',
+        path: 'room2',
         component: () => import(/* webpackChunkName: "about" */ '../components/room/room2.vue'),
       },
       {
-        path:'room3',
+        path: 'room3',
         component: () => import(/* webpackChunkName: "about" */ '../components/room/room3.vue'),
       },
       {
-        path:'room4',
+        path: 'room4',
         component: () => import(/* webpackChunkName: "about" */ '../components/room/room4.vue'),
       },
       {
-        path:'room5',
+        path: 'room5',
         component: () => import(/* webpackChunkName: "about" */ '../components/room/room5.vue'),
       },
       {
-        path:'room6',
+        path: 'room6',
         component: () => import(/* webpackChunkName: "about" */ '../components/room/room6.vue'),
       }
     ]
   },
   {
-    path:'*',
+    path: '/members',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Member.vue'),
+    children:[
+      {
+        path:'login',
+        component: () => import(/* webpackChunkName: "about" */ '../components/member/login.vue'),
+      },
+      {
+        path:'register',
+        component: () => import(/* webpackChunkName: "about" */ '../components/member/register.vue'),
+      },
+      {
+        path:'forget',
+        component: () => import(/* webpackChunkName: "about" */ '../components/member/forget.vue'),
+      }
+    ]
+  },
+  {
+    path: '*',
     component: Home
   }
 ]

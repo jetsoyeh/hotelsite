@@ -18,7 +18,7 @@
               room.price
             }}</v-card-subtitle>
             <v-card-subtitle
-              ><router-link to="#">{{
+              ><router-link :to="room.link">{{
                 room.detail
               }}</router-link></v-card-subtitle
             >

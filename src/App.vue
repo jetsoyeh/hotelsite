@@ -49,7 +49,7 @@
     </v-main>
     <!--頁尾-->
     <v-divider></v-divider>
-    <v-footer >
+    <v-footer>
       <myfooter />
     </v-footer>
   </v-app>
@@ -65,6 +65,7 @@ export default {
   },
   data() {
     return {
+     
       sidebar: false,
       menuItems: [
         { icon: "mdi-home", title: "日出之美", link: "/" },
@@ -76,6 +77,7 @@ export default {
         },
         { icon: "mdi-google-maps", title: "周邊景點", link: "/attractions" },
         { icon: "mdi-new-box", title: "最新消息", link: "/new" },
+        { icon: "mdi-account-circle", title: "會員專區", link: "/members/login" },
         { icon: "mdi-contacts", title: "聯絡我們", link: "/contacts" },
       ],
     };
@@ -84,5 +86,4 @@ export default {
 </script>
 <style lang="sass">
 @import '~vuetify/src/styles/main.sass'
-
 </style>
