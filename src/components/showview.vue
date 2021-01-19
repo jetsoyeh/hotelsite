@@ -11,7 +11,7 @@ export default {
     return {
       items: [
         { src: require("../assets/jpg/S__87457797.jpg") },
-        { src: require("../assets/jpg/S__86507535.jpg") },
+        { src: require("../assets/jpg/S__86507533.jpg") },
         { src: require("../assets/jpg/S__86507538.jpg") },
         { src: require("../assets/jpg/S__87457798.jpg") },
         { src: require("../assets/jpg/S__86507532.jpg") },

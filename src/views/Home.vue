@@ -42,11 +42,11 @@ export default {
     return {
       items: [
         { src: require("../assets/jpg/S__86507552.jpg") },
-        { src: require("../assets/jpg/S__86507554.jpg") },
+        { src: require("../assets/jpg/S__86507546.jpg") },
         { src: require("../assets/jpg/S__86507533.jpg") },
-        { src: require("../assets/jpg/S__86507557.jpg") },
+        { src: require("../assets/jpg/S__86687749.jpg") },
         { src: require("../assets/jpg/S__86687754.jpg") },
-        { src: require("../assets/jpg/S__86507530.jpg") },
+        { src: require("../assets/jpg/S__86507529.jpg") },
       ],
       smallitems: [
         {

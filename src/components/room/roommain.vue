@@ -1,8 +1,5 @@
 <template>
   <div>
-    <h1>Room</h1>
-    <h3>房間介紹</h3>
-    <v-divider></v-divider>
     <!--xs size-->
     <div class="hidden-sm-and-up">
       <v-card v-for="room in showroom" :key="room.title">

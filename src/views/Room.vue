@@ -19,7 +19,16 @@
           </v-list>
         </v-col>
         <v-col cols="12" lg="9" sm="9" xs="12">
-         <router-view></router-view>
+          <v-row>
+            <v-col cols="12" lg="2" sm="2" xs="12">
+              <h1>Room</h1>
+              <h4>房間介紹</h4>
+            </v-col>
+            <v-col cols="12" lg="10" sm="10" xs="12">
+              <VueBreadcrumbs />
+            </v-col>
+          </v-row>
+          <router-view></router-view>
         </v-col>
       </v-row>
     </v-container>
@@ -27,6 +36,8 @@
 </template>
 <script>
 import Showview from "../components/showview.vue";
+import VueBreadcrumbs from "../components/vuebreadcrumbs";
+
 export default {
   data() {
     return {
@@ -38,11 +49,11 @@ export default {
         { title: "家庭房", link: "/room/room5" },
         { title: "行政雙人房", link: "/room/room6" },
       ],
-     
     };
   },
   components: {
     Showview,
+    VueBreadcrumbs,
   },
 };
 </script>

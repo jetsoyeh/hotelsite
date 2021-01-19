@@ -23,6 +23,8 @@
         @blur="$v.password.$touch()"
       ></v-text-field>
       <v-btn class="mr-4" color="primary" @click="submit">會員登入</v-btn>
+      <v-btn class="mr-4" color="accent" @click="revoke">取消憑證</v-btn>
+      <v-btn class="mr-4" color="primary" @click="getAll">付款資料</v-btn>
     </v-container>
   </v-form>
 </template>
@@ -67,8 +69,7 @@ export default {
       this.user.password = this.password;
       if (this.user.email && this.user.password) {
         this.$store.dispatch("auth/login", this.user).then(
-          (res) => {
-            /*console.log(res.data.token);*/
+          () => {
             this.$router.push("/");
           },
           (error) => {
@@ -77,7 +78,7 @@ export default {
                 alert("500 Internal Server Error ");
                 break;
               case 400:
-                alert("400 Bad Request");
+                alert("400 Bad Request and Email or password incorrect");
                 break;
               default:
                 break;
@@ -85,6 +86,27 @@ export default {
           }
         );
       }
+    },
+    revoke() {
+      this.$store.dispatch("auth/revoke_token").then(
+        () => {
+          localStorage.clear();
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    },
+
+    getAll() {
+      this.$store.dispatch("auth/get_paydeatail").then(
+        (res) => {
+          console.log(res.data);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
     },
   },
 };

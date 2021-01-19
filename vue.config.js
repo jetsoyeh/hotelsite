@@ -18,14 +18,14 @@ module.exports = {
          target:'https://www.twtainan.net/data',
          changeOrigin:true,
          ws:true,
-         pathRewrite:{'^/data':''}
+         pathRewrite:{'^/data':'/'}
       },
-      '/api':{
-        target:"https://localhost:44382/api",
+     /*'/api':{
+        target:"https://www.aspnetcore.com/api",
         changeOrigin:true,
         ws:true,
-        pathRewrite:{'^/api':''}
-      }
+        pathRewrite:{'^/api':'/'}
+      }*/
     }
   }
 }

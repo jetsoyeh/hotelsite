@@ -1,64 +1,103 @@
 import authservice from '../../services/auth.service'
 
 
-const user = JSON.parse(sessionStorage.getItem('user'));
+const user = JSON.parse(localStorage.getItem('accesstoken'));
 
 const initialState = user
-?{status:{loggedIn:true},user}
-:{status:{loggedIn:false},user:null};
+    ? { status: { loggedIn: true }, user }
+    : { status: { loggedIn: false }, user: null };
 
-export const auth={
+export const auth = {
     namespaced: true,
-    state:initialState,
-    actions:{
-        login({commit},user){
+    state: initialState,
+    actions: {
+        login({ commit }, user) {
             return authservice.login(user).then(
-                user=>{
-                    commit('loginSuccess',user);
+                user => {
+                    commit('loginSuccess', user);
                     return Promise.resolve(user);
                 },
-                err=>{
+                err => {
                     commit('loginFailure');
                     return Promise.reject(err);
                 }
             );
         },
-        logout({commit}){
+        logout({ commit }) {
             authservice.logout();
             commit('logout');
         },
 
-        register({commit},user){
+        register({ commit }, user) {
             return authservice.register(user).then(
-                res=>{
+                res => {
                     commit('registerSuccess');
                     return Promise.resolve(res.data);
                 },
-                err=>{
+                err => {
                     commit('registerFailure');
                     return Promise.reject(err);
                 }
             );
+        },
+
+        refresh_token({commit}) {
+            return authservice.refresh().then(
+                res => {
+                    commit("refreshSuccess");
+                    return Promise.resolve(res);
+                }
+            )
+                .catch(err => {
+                    commit("refreshFailure");
+                    return Promise.reject(err);
+                })
+        },
+
+        revoke_token() {
+            return authservice.revoke().then(
+                res => {
+                    Promise.resolve(res);
+                }
+            ).catch(err => {
+                Promise.reject(err);
+            })
+        },
+
+        get_paydeatail(){
+            return authservice.getPaymentDetail().then(
+                res=>{
+                   return Promise.resolve(res);
+                }
+            ).catch(err=>{
+                return Promise.reject(err);
+            })
         }
 
     },
-    mutations:{
-        loginSuccess(state,user){
+    mutations: {
+        loginSuccess(state, user) {
             state.status.loggedIn = true;
             state.user = user;
         },
-        loginFailure(state){
+        loginFailure(state) {
             state.status.loggedIn = false;
             state.user = null;
         },
-        logout(state){
+        logout(state) {
             state.status.loggedIn = false;
             state.user = null;
         },
-        registerSuccess(state){
+        registerSuccess(state) {
             state.status.loggedIn = false;
         },
-        registerFailure(state){
+        registerFailure(state) {
+            state.status.loggedIn = false;
+        },
+        refreshSuccess(state) {
+            state.status.loggedIn = false;
+        },
+        refreshFailure(state) {
             state.status.loggedIn = false;
         }
     }

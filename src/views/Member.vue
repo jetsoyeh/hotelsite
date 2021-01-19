@@ -21,6 +21,7 @@
           </v-list>
         </v-col>
         <v-col cols="12" lg="9" sm="9" xs="12">
+            <VueBreadcrumbs />
             <router-view></router-view>
         </v-col>
       </v-row>
@@ -29,6 +30,7 @@
 </template>
 <script>
 import Showview from "../components/showview.vue";
+import VueBreadcrumbs from '../components/vuebreadcrumbs';
 export default {
   data() {
     return {
@@ -40,7 +42,7 @@ export default {
     };
   },
   components: {
-    Showview,
+    Showview, VueBreadcrumbs,
   },
 };
 </script>
